@@ -1,0 +1,21 @@
+export const lightTheme = {
+  black: '#000',
+  white: '#FFF',
+
+  'zinc-50': '#FAFAFA',
+  'zinc-100': '#27272A',
+  'zinc-200': '#3F3F46',
+  'zinc-300': '#52525B',
+  'zinc-400': '#71717A',
+  'zinc-500': '#A1A1AA',
+  'zinc-600': '#D4D4D8',
+  'zinc-700': '#E4E4E7',
+  'zinc-800': '#F4F4F5',
+  'zinc-900': '#18181B',
+  'zinc-950': '#FAFAFA',
+
+  'blue-300': '#0A66C2',
+  'blue-500': '#031271',
+
+  'red-500': '#F75A68',
+}
