@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "avatarUrl": "https://unsplash.com/photos/man-crossing-both-arms-KIPqvvTOC1s",
+      "email": "john.doe@example.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "name": "Jane Doe",
+      "avatarUrl": "https://unsplash.com/photos/a-person-holding-a-laptop-7mBictB_urk",
+      "email": "jane.doe@example.com",
+      "password": "123456"
+    }
+  ]
+}

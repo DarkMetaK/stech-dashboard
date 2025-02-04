@@ -1,12 +1,26 @@
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { toast } from 'react-toastify'
 
 import googleIcon from '@/assets/google-logo.svg'
 import { Button } from '@/components/Button'
 
 import { SignInContainer, Form, PasswordRecovery } from './styles'
 import { Input } from '@/components/Input'
+import { api } from '@/libs/axios'
+import axios from 'axios'
+import { useContext } from 'react'
+import { authContext } from '@/contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
+
+interface SignInBody {
+  id: string
+  name: string
+  avatarUrl: string
+  email: string
+  password: string
+}
 
 const signInFormSchema = z.object({
   email: z
@@ -21,10 +35,12 @@ const signInFormSchema = z.object({
 type SignInFormData = z.infer<typeof signInFormSchema>
 
 export function SignIn() {
+  const { saveToken } = useContext(authContext)
+  const navigate = useNavigate()
+
   const {
     control,
     handleSubmit,
-    reset,
     formState: { isSubmitting, errors },
   } = useForm<SignInFormData>({
     mode: 'onBlur',
@@ -32,8 +48,28 @@ export function SignIn() {
   })
 
   async function handleSignIn({ email, password }: SignInFormData) {
-    console.log({ email, password })
-    reset()
+    try {
+      const response = await api.get<SignInBody[]>(
+        `/users?email=${email}&password=${password}`,
+      )
+
+      if (response.data.length === 0) {
+        return toast('Credenciais inválidas.', { type: 'error' })
+      }
+
+      saveToken(response.data[0].id)
+      await navigate('/', { replace: true })
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        alert(error.response.data)
+      } else {
+        toast('Ocorreu um erro inesperado. Tente novamente mais tarde.', {
+          type: 'error',
+        })
+      }
+
+      console.error(error)
+    }
   }
 
   return (
@@ -64,7 +100,13 @@ export function SignIn() {
             <a href="#">Esqueci minha senha</a>
           </PasswordRecovery>
 
-          <Button type="submit">Acessar Sistema</Button>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            isLoading={isSubmitting}
+          >
+            Acessar Sistema
+          </Button>
         </Form>
 
         <span>Ou</span>

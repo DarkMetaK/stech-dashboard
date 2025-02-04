@@ -20,7 +20,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   cursor: pointer;
   transition: background-color 0.2s;
 
-  :disabled {
+  &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
@@ -32,7 +32,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           background-color: ${props.theme['blue-500']};
           color: ${props.theme.white};
 
-          &:hover {
+          &:not(:disabled):hover {
             background-color: ${props.theme['blue-300']};
           }
         `
@@ -42,9 +42,29 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           background-color: transparent;
           color: ${props.theme.white};
 
-          &:hover {
+          &:not(:disabled):hover {
             color: ${props.theme['blue-300']};
             border-color: ${props.theme['blue-300']};
           }
         `}
+`
+
+export const Loader = styled.span`
+  width: 20px;
+  height: 20px;
+  border: 4px solid ${(props) => props.theme.white};
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `

@@ -1,19 +1,21 @@
 import { ButtonHTMLAttributes } from 'react'
-import { ButtonContainer } from './styles'
+import { ButtonContainer, Loader } from './styles'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'ghost'
+  isLoading?: boolean
   children: React.ReactNode
 }
 
 export function Button({
   variant = 'primary',
+  isLoading = false,
   children,
   ...rest
 }: ButtonProps) {
   return (
     <ButtonContainer variant={variant} {...rest}>
-      {children}
+      {isLoading ? <Loader /> : children}
     </ButtonContainer>
   )
 }

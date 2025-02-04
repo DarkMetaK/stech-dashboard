@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import { Bounce, ToastContainer } from 'react-toastify'
 
 import logo from '@/assets/stech-logo.svg'
 
@@ -13,6 +14,20 @@ export function AuthLayout() {
       </Hero>
 
       <Outlet />
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+        transition={Bounce}
+      />
     </AuthContainer>
   )
 }
