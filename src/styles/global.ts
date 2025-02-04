@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${(props) => props.theme['zinc-950']};
-    color: ${(props) => props.theme['zinc-200']};
+    color: ${(props) => props.theme['zinc-50']};
   }
 
   body, input, textarea {

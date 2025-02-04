@@ -19,6 +19,7 @@ export function AppLayout() {
   return (
     <AppContainer>
       <Sidebar />
+
       <Outlet />
     </AppContainer>
   )

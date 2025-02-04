@@ -20,7 +20,7 @@ export const SignInContainer = styled.main`
       align-items: center;
       gap: 0.5rem;
 
-      color: ${(props) => props.theme['zinc-500']};
+      color: ${(props) => props.theme['zinc-400']};
       font-size: 1rem;
 
       &::before,
@@ -29,7 +29,7 @@ export const SignInContainer = styled.main`
         display: block;
         width: 100%;
         height: 1px;
-        background-color: ${(props) => props.theme['zinc-500']};
+        background-color: ${(props) => props.theme['zinc-400']};
       }
     }
 
@@ -79,7 +79,7 @@ export const PasswordRecovery = styled.div`
 
   a {
     align-self: flex-end;
-    color: ${(props) => props.theme['zinc-500']};
+    color: ${(props) => props.theme['zinc-400']};
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 400;

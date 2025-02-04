@@ -9,7 +9,7 @@ import {
   Gear,
 } from 'phosphor-react'
 
-import { NavLink, SidebarContainer, ToggleButton } from './styles'
+import { NavLink, SidebarContainer, SidebarToggle } from './styles'
 
 export function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
@@ -21,17 +21,21 @@ export function Sidebar() {
   }
 
   return (
-    <SidebarContainer>
-      <ToggleButton data-open={isSidebarOpen} onClick={handleToggleSidebar}>
+    <SidebarContainer data-open={isSidebarOpen}>
+      <SidebarToggle
+        onClick={handleToggleSidebar}
+        data-open={isSidebarOpen}
+        title={isSidebarOpen ? 'Minimizar' : 'Maximizar'}
+      >
         <CaretDoubleLeft size={24} />
-      </ToggleButton>
+      </SidebarToggle>
 
       <nav>
         <ul>
           <li>
             <NavLink to="/" title="Dashboard" data-active={pathname === '/'}>
               <House size={24} />
-              {isSidebarOpen && 'Dashboard'}
+              <span>Dashboard</span>
             </NavLink>
           </li>
 
@@ -42,7 +46,7 @@ export function Sidebar() {
               data-active={pathname === '/reports'}
             >
               <ChartPieSlice size={24} />
-              {isSidebarOpen && 'Relatórios'}
+              <span>Relatórios</span>
             </NavLink>
           </li>
 
@@ -53,7 +57,7 @@ export function Sidebar() {
               data-active={pathname === '/schedule'}
             >
               <Calendar size={24} />
-              {isSidebarOpen && 'Agenda'}
+              <span>Agenda</span>
             </NavLink>
           </li>
 
@@ -64,7 +68,7 @@ export function Sidebar() {
               data-active={pathname === '/members'}
             >
               <Users size={24} />
-              {isSidebarOpen && 'Membros'}
+              <span>Membros</span>
             </NavLink>
           </li>
 
@@ -75,7 +79,7 @@ export function Sidebar() {
               data-active={pathname === '/settings'}
             >
               <Gear size={24} />
-              {isSidebarOpen && 'Configurações'}
+              <span>Configurações</span>
             </NavLink>
           </li>
         </ul>
