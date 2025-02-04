@@ -3,6 +3,9 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 import { authContext } from '@/contexts/AuthContext'
 
+import { AppContainer } from './styles'
+import { Sidebar } from '@/components/Sidebar'
+
 export function AppLayout() {
   const { accessToken, authIsLoading } = useContext(authContext)
   const navigate = useNavigate()
@@ -14,10 +17,9 @@ export function AppLayout() {
   }, [accessToken, authIsLoading, navigate])
 
   return (
-    <div>
-      <h1>App Layout</h1>
-
+    <AppContainer>
+      <Sidebar />
       <Outlet />
-    </div>
+    </AppContainer>
   )
 }
