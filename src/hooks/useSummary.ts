@@ -15,21 +15,25 @@ interface Transactions {
 }
 
 export function useSummary() {
+  const [isLoading, setIsLoading] = useState(true)
   const [transactions, setTransactions] = useState<Transactions>({})
 
   useEffect(() => {
     async function loadTransactions() {
       try {
+        setIsLoading(true)
         const response = await api.get<Transactions>('/transactions')
 
         setTransactions(response.data)
       } catch (error) {
         console.error(error)
+      } finally {
+        setIsLoading(false)
       }
     }
 
     loadTransactions()
-  })
+  }, [])
 
   const allTransactions = Object.values(transactions).flat()
 
@@ -51,5 +55,6 @@ export function useSummary() {
     totalIncome,
     totalOutcome,
     totalBalance,
+    isLoading,
   }
 }

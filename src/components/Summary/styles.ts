@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const SummaryContainer = styled.section`
   width: 100%;
@@ -14,11 +14,7 @@ export const SummaryContainer = styled.section`
   }
 `
 
-interface ICard {
-  variant?: 'green'
-}
-
-export const Card = styled.div<ICard>`
+export const Card = styled.div`
   border-radius: 0.5rem;
 
   background-color: ${(props) => props.theme['zinc-800']};
@@ -43,26 +39,4 @@ export const Card = styled.div<ICard>`
     font-size: 1.5rem;
     font-weight: 700;
   }
-
-  /* strong {
-    font-size: 2rem;
-    line-height: 1.4rem;
-    color: ${(props) => props.theme['gray-100']};
-  }
-
-  ${(props) =>
-    props.variant === 'green' &&
-    css`
-      background-color: ${(props) => props.theme['green-700']};
-    `}
-
-  @media (max-width: 480px) {
-    strong {
-      font-size: 1.5rem;
-    }
-    svg {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  } */
 `

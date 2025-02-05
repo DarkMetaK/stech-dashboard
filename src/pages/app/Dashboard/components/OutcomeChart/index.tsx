@@ -10,6 +10,7 @@ import {
 
 import { api } from '@/libs/axios'
 import dayjs from 'dayjs'
+import { Skeleton } from '@/components/Skeleton/styles'
 
 interface Transaction {
   id: number
@@ -25,11 +26,13 @@ interface Transactions {
 }
 
 export function OutcomeChart() {
+  const [isLoading, setIsLoading] = useState(true)
   const [totalOutcomes, setTotalOutcomes] = useState<Transaction[]>([])
 
   useEffect(() => {
     async function loadTransactions() {
       try {
+        setIsLoading(true)
         const response = await api.get<Transactions>('/transactions')
 
         const transactions = response.data
@@ -41,11 +44,17 @@ export function OutcomeChart() {
         setTotalOutcomes(outcomes)
       } catch (error) {
         console.error(error)
+      } finally {
+        setIsLoading(false)
       }
     }
 
     loadTransactions()
   }, [])
+
+  if (isLoading) {
+    return <Skeleton height="240px" />
+  }
 
   return (
     <ResponsiveContainer width="100%" height={240}>
