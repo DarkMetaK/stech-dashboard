@@ -37,6 +37,7 @@ export const SidebarContainer = styled.aside`
 
   @media (max-width: 768px) {
     position: fixed;
+    z-index: 999;
     bottom: 0;
     width: 100% !important;
 
