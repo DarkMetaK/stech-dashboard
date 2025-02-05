@@ -23,16 +23,16 @@ export const InputContainer = styled.label`
   font-weight: 500;
 
   &[data-error='true'] {
-    color: ${(props) => props.theme['red-500']};
+    color: ${(props) => props.theme['red-300']};
 
     ${InputStyle} {
-      border-color: ${(props) => props.theme['red-500']};
+      border-color: ${(props) => props.theme['red-300']};
     }
   }
 `
 
 export const ErrorMessage = styled.p`
-  color: ${(props) => props.theme['red-500']};
+  color: ${(props) => props.theme['red-300']};
   font-size: 1rem;
   font-weight: 400;
 `

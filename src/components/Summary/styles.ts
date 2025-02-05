@@ -5,7 +5,7 @@ export const SummaryContainer = styled.section`
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 
   @media (max-width: 720px) {
     grid-template-columns: 1fr;

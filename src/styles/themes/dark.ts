@@ -17,5 +17,6 @@ export const darkTheme = {
   'blue-300': '#0A66C2',
   'blue-500': '#031271',
 
-  'red-500': '#F75A68',
+  'red-300': '#F75A68',
+  'red-500': '#D32F2F',
 }

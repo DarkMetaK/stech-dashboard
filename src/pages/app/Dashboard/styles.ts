@@ -13,14 +13,14 @@ export const Content = styled.main`
   padding: 1.5rem;
 
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-size: 2rem;
     color: ${({ theme }) => theme['zinc-50']};
   }
 `
 
 export const Charts = styled.div`
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);

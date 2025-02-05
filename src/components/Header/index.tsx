@@ -1,5 +1,9 @@
+import { useContext, useState } from 'react'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import { CaretDown, MagnifyingGlass, SignOut, User } from 'phosphor-react'
+import * as Dialog from '@radix-ui/react-dialog'
+import { CaretDown, MagnifyingGlass, PlusCircle, SignOut } from 'phosphor-react'
+
+import { authContext } from '@/contexts/AuthContext'
 
 import {
   AccountMenu,
@@ -7,9 +11,16 @@ import {
   DropdownMenuContent,
   HeaderContainer,
   SearchInputContainer,
+  DialogOverlay,
+  DialogContent,
 } from './styles'
+import { Button } from '../Button'
 
 export function Header() {
+  const [openDialog, setOpenDialog] = useState(false)
+
+  const { logout } = useContext(authContext)
+
   return (
     <HeaderContainer>
       <SearchInputContainer>
@@ -27,7 +38,7 @@ export function Header() {
 
             <div>
               <strong>John Doe</strong>
-              <span>john.doe@examplesdfsdfsdfsdfsdfsdfds.com</span>
+              <span>john.doe@example.com</span>
             </div>
 
             <CaretDown size={24} />
@@ -36,18 +47,37 @@ export function Header() {
 
         <DropdownMenu.Portal>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onSelect={() => console.log('Profile')}>
-              <User size={24} />
-              <p>Perfil</p>
+            <DropdownMenuItem>
+              <PlusCircle size={24} />
+              <p>Adicionar Conta</p>
             </DropdownMenuItem>
 
-            <DropdownMenuItem onSelect={() => console.log('Logout')}>
+            <DropdownMenuItem onClick={() => setOpenDialog(true)}>
               <SignOut size={24} />
               <p>Sair</p>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
+
+      <Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
+        <Dialog.Portal>
+          <DialogOverlay />
+
+          <DialogContent>
+            <Dialog.Title>Tem certeza que deseja sair?</Dialog.Title>
+
+            <div>
+              <Button variant="destructive" onClick={() => logout()}>
+                Sair
+              </Button>
+              <Button variant="ghost" onClick={() => setOpenDialog(false)}>
+                Cancelar
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog.Portal>
+      </Dialog.Root>
     </HeaderContainer>
   )
 }

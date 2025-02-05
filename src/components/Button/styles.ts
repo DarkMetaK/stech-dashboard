@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface ButtonContainerProps {
-  variant: 'primary' | 'ghost'
+  variant: 'primary' | 'destructive' | 'ghost'
 }
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
@@ -36,17 +36,26 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
             background-color: ${props.theme['blue-300']};
           }
         `
-      : props.variant === 'ghost' &&
-        css`
-          border: 1px solid ${props.theme.white};
-          background-color: transparent;
-          color: ${props.theme.white};
+      : props.variant === 'ghost'
+        ? css`
+            border: 1px solid ${props.theme.white};
+            background-color: transparent;
+            color: ${props.theme.white};
 
-          &:not(:disabled):hover {
-            color: ${props.theme['blue-300']};
-            border-color: ${props.theme['blue-300']};
-          }
-        `}
+            &:not(:disabled):hover {
+              color: ${props.theme['blue-300']};
+              border-color: ${props.theme['blue-300']};
+            }
+          `
+        : css`
+            border: none;
+            background-color: ${props.theme['red-500']};
+            color: ${props.theme.white};
+
+            &:not(:disabled):hover {
+              background-color: ${props.theme['red-300']};
+            }
+          `}
 `
 
 export const Loader = styled.span`

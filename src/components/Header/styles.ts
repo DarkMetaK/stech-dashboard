@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as Dialog from '@radix-ui/react-dialog'
 
 export const HeaderContainer = styled.header`
   padding: 0.75rem 1.5rem;
@@ -156,5 +157,49 @@ export const DropdownMenuItem = styled(DropdownMenu.Item)`
 
   & + & {
     border-top: 1px solid ${({ theme }) => theme['zinc-800']};
+  }
+`
+
+export const DialogOverlay = styled(Dialog.Overlay)`
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+
+  background-color: rgba(0, 0, 0, 0.5);
+`
+
+export const DialogContent = styled(Dialog.Content)`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme['zinc-950']};
+
+  h2 {
+    margin-bottom: 1rem;
+
+    font-size: 1.125rem;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    button {
+      margin-top: 0px;
+      flex: 1;
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0;
   }
 `

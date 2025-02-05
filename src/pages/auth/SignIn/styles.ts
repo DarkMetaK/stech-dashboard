@@ -95,7 +95,7 @@ export const PasswordRecovery = styled.div`
 export const ErrorMessage = styled.p`
   min-height: 1rem;
 
-  color: ${(props) => props.theme['red-500']};
+  color: ${(props) => props.theme['red-300']};
   font-size: 1rem;
   font-weight: 400;
 `

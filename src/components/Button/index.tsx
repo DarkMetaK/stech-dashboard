@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react'
 import { ButtonContainer, Loader } from './styles'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'ghost'
+  variant?: 'primary' | 'ghost' | 'destructive'
   isLoading?: boolean
   children: React.ReactNode
 }
