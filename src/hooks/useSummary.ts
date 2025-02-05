@@ -1,49 +1,20 @@
-import { api } from '@/libs/axios'
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
-interface Transaction {
-  id: number
-  name: string
-  type: 'income' | 'outcome'
-  price: number
-  amount: number
-  createdAt: string
-}
-
-interface Transactions {
-  [date: string]: Transaction[]
-}
+import { getTransactions } from '@/api/transactions'
 
 export function useSummary() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [transactions, setTransactions] = useState<Transactions>({})
+  const { data: transactions, isLoading } = useQuery({
+    queryKey: ['transactions'],
+    queryFn: getTransactions,
+  })
 
-  useEffect(() => {
-    async function loadTransactions() {
-      try {
-        setIsLoading(true)
-        const response = await api.get<Transactions>('/transactions')
-
-        setTransactions(response.data)
-      } catch (error) {
-        console.error(error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadTransactions()
-  }, [])
-
-  const allTransactions = Object.values(transactions).flat()
-
-  const totalIncome = allTransactions
+  const totalIncome = (transactions ?? [])
     .filter((item) => item.type === 'income')
     .reduce((acc, item) => {
       return (acc += item.price * item.amount)
     }, 0)
 
-  const totalOutcome = allTransactions
+  const totalOutcome = (transactions ?? [])
     .filter((item) => item.type === 'outcome')
     .reduce((acc, item) => {
       return (acc += item.price * item.amount)

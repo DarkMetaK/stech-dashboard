@@ -19,7 +19,7 @@ import { Button } from '../Button'
 export function Header() {
   const [openDialog, setOpenDialog] = useState(false)
 
-  const { logout } = useContext(authContext)
+  const { user, logout } = useContext(authContext)
 
   return (
     <HeaderContainer>
@@ -31,14 +31,11 @@ export function Header() {
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <AccountMenu>
-            <img
-              src="https://avatars.githubusercontent.com/u/77026784?v=4"
-              alt=""
-            />
+            <img src={user?.avatarUrl} alt="" />
 
             <div>
-              <strong>John Doe</strong>
-              <span>john.doe@example.com</span>
+              <strong>{user?.name}</strong>
+              <span>{user?.email}</span>
             </div>
 
             <CaretDown size={24} />

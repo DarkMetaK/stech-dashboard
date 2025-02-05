@@ -1,26 +1,18 @@
+import { useContext } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'react-toastify'
-
-import googleIcon from '@/assets/google-logo.svg'
-import { Button } from '@/components/Button'
-
-import { SignInContainer, Form, PasswordRecovery } from './styles'
-import { Input } from '@/components/Input'
-import { api } from '@/libs/axios'
-import axios from 'axios'
-import { useContext } from 'react'
-import { authContext } from '@/contexts/AuthContext'
+import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-interface SignInBody {
-  id: string
-  name: string
-  avatarUrl: string
-  email: string
-  password: string
-}
+import googleIcon from '@/assets/google-logo.svg'
+import { signIn } from '@/api/sign-in'
+import { authContext } from '@/contexts/AuthContext'
+
+import { SignInContainer, Form, PasswordRecovery } from './styles'
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 
 const signInFormSchema = z.object({
   email: z
@@ -35,8 +27,28 @@ const signInFormSchema = z.object({
 type SignInFormData = z.infer<typeof signInFormSchema>
 
 export function SignIn() {
-  const { saveToken } = useContext(authContext)
+  const { saveAuth } = useContext(authContext)
   const navigate = useNavigate()
+
+  const { mutateAsync } = useMutation({
+    mutationFn: signIn,
+    onSuccess: (data) => {
+      if (data.length === 0) {
+        return toast('Credenciais inválidas.', { type: 'error' })
+      }
+
+      saveAuth({
+        token: new Date().getTime().toString(),
+        user: {
+          id: data[0].id,
+          avatarUrl: data[0].avatarUrl,
+          name: data[0].name,
+          email: data[0].email,
+        },
+      })
+      navigate('/', { replace: true })
+    },
+  })
 
   const {
     control,
@@ -47,29 +59,8 @@ export function SignIn() {
     resolver: zodResolver(signInFormSchema),
   })
 
-  async function handleSignIn({ email, password }: SignInFormData) {
-    try {
-      const response = await api.get<SignInBody[]>(
-        `/users?email=${email}&password=${password}`,
-      )
-
-      if (response.data.length === 0) {
-        return toast('Credenciais inválidas.', { type: 'error' })
-      }
-
-      saveToken(response.data[0].id)
-      await navigate('/', { replace: true })
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        alert(error.response.data)
-      } else {
-        toast('Ocorreu um erro inesperado. Tente novamente mais tarde.', {
-          type: 'error',
-        })
-      }
-
-      console.error(error)
-    }
+  async function handleSignIn(data: SignInFormData) {
+    await mutateAsync(data)
   }
 
   return (

@@ -5,8 +5,10 @@ export const api = axios.create({
 })
 
 // Simular delay
-api.interceptors.request.use(async (config) => {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
+if (import.meta.env.DEV) {
+  api.interceptors.request.use(async (config) => {
+    await new Promise((resolve) => setTimeout(resolve, 1500))
 
-  return config
-})
+    return config
+  })
+}

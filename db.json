@@ -3,144 +3,130 @@
     {
       "id": "1",
       "name": "John Doe",
-      "avatarUrl": "https://unsplash.com/photos/man-crossing-both-arms-KIPqvvTOC1s",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/4792/4792929.png",
       "email": "john.doe@example.com",
       "password": "123456"
     },
     {
       "id": "2",
       "name": "Jane Doe",
-      "avatarUrl": "https://unsplash.com/photos/a-person-holding-a-laptop-7mBictB_urk",
+      "avatarUrl": "https://cdn-icons-png.flaticon.com/512/4794/4794939.png",
       "email": "jane.doe@example.com",
       "password": "123456"
     }
   ],
-"transactions": {
-    "2025-01-10": [
-      {
-        "id": 1,
-        "name": "Produto 1",
-        "type": "income",
-        "price": 80,
-        "amount": 1,
-        "createdAt": "2025-01-10T20:51:21.578Z"
-      },
-      {
-        "id": 2,
-        "name": "Produto 2",
-        "type": "income",
-        "price": 54,
-        "amount": 1,
-        "createdAt": "2025-01-10T18:51:21.578Z"
-      }
-    ],
-    "2025-01-11": [
-      {
-        "id": 3,
-        "name": "Recurso 1",
-        "type": "outcome",
-        "price": 12,
-        "amount": 1,
-        "createdAt": "2025-01-11T10:51:21.578Z"
-      },
-      {
-        "id": 4,
-        "name": "Recurso 2",
-        "type": "outcome",
-        "price": 59,
-        "amount": 1,
-        "createdAt": "2025-01-11T14:51:21.578Z"
-      }
-    ],
-    "2025-01-12": [
-      {
-        "id": 5,
-        "name": "Produto 3",
-        "type": "income",
-        "price": 100,
-        "amount": 1,
-        "createdAt": "2025-01-12T09:51:21.578Z"
-      },
-      {
-        "id": 6,
-        "name": "Recurso 3",
-        "type": "outcome",
-        "price": 20,
-        "amount": 1,
-        "createdAt": "2025-01-12T11:51:21.578Z"
-      }
-    ],
-    "2025-01-13": [
-      {
-        "id": 7,
-        "name": "Produto 4",
-        "type": "income",
-        "price": 75,
-        "amount": 1,
-        "createdAt": "2025-01-13T15:51:21.578Z"
-      },
-      {
-        "id": 8,
-        "name": "Recurso 4",
-        "type": "outcome",
-        "price": 30,
-        "amount": 1,
-        "createdAt": "2025-01-13T17:51:21.578Z"
-      }
-    ],
-    "2025-01-14": [
-      {
-        "id": 9,
-        "name": "Produto 5",
-        "type": "income",
-        "price": 60,
-        "amount": 1,
-        "createdAt": "2025-01-14T08:51:21.578Z"
-      },
-      {
-        "id": 10,
-        "name": "Recurso 5",
-        "type": "outcome",
-        "price": 45,
-        "amount": 1,
-        "createdAt": "2025-01-14T12:51:21.578Z"
-      }
-    ],
-    "2025-01-15": [
-      {
-        "id": 11,
-        "name": "Produto 6",
-        "type": "income",
-        "price": 90,
-        "amount": 1,
-        "createdAt": "2025-01-15T14:51:21.578Z"
-      },
-      {
-        "id": 12,
-        "name": "Recurso 6",
-        "type": "outcome",
-        "price": 25,
-        "amount": 1,
-        "createdAt": "2025-01-15T16:51:21.578Z"
-      }
-    ],
-    "2025-01-16": [
-      {
-        "id": 13,
-        "name": "Produto 7",
-        "type": "income",
-        "price": 110,
-        "amount": 1,
-        "createdAt": "2025-01-16T10:51:21.578Z"
-      },
-      {
-        "id": 14,
-        "name": "Recurso 7",
-        "type": "outcome",
-        "price": 35,
-        "amount": 1,
-        "createdAt": "2025-01-16T13:51:21.578Z"
-      }
-    ]
-}
+"transactions": [
+  {
+    "id": 1,
+    "name": "Produto 1",
+    "type": "income",
+    "price": 80,
+    "amount": 1,
+    "createdAt": "2025-01-10T20:51:21.578Z"
+  },
+  {
+    "id": 2,
+    "name": "Produto 2",
+    "type": "income",
+    "price": 54,
+    "amount": 1,
+    "createdAt": "2025-01-10T18:51:21.578Z"
+  },
+  {
+    "id": 3,
+    "name": "Recurso 1",
+    "type": "outcome",
+    "price": 12,
+    "amount": 1,
+    "createdAt": "2025-01-11T10:51:21.578Z"
+  },
+  {
+    "id": 4,
+    "name": "Recurso 2",
+    "type": "outcome",
+    "price": 59,
+    "amount": 1,
+    "createdAt": "2025-01-11T14:51:21.578Z"
+  },
+  {
+    "id": 5,
+    "name": "Produto 3",
+    "type": "income",
+    "price": 100,
+    "amount": 1,
+    "createdAt": "2025-01-12T09:51:21.578Z"
+  },
+  {
+    "id": 6,
+    "name": "Recurso 3",
+    "type": "outcome",
+    "price": 20,
+    "amount": 1,
+    "createdAt": "2025-01-12T11:51:21.578Z"
+  },
+  {
+    "id": 7,
+    "name": "Produto 4",
+    "type": "income",
+    "price": 75,
+    "amount": 1,
+    "createdAt": "2025-01-13T15:51:21.578Z"
+  },
+  {
+    "id": 8,
+    "name": "Recurso 4",
+    "type": "outcome",
+    "price": 30,
+    "amount": 1,
+    "createdAt": "2025-01-13T17:51:21.578Z"
+  },
+  {
+    "id": 9,
+    "name": "Produto 5",
+    "type": "income",
+    "price": 60,
+    "amount": 1,
+    "createdAt": "2025-01-14T08:51:21.578Z"
+  },
+  {
+    "id": 10,
+    "name": "Recurso 5",
+    "type": "outcome",
+    "price": 45,
+    "amount": 1,
+    "createdAt": "2025-01-14T12:51:21.578Z"
+  },
+  {
+    "id": 11,
+    "name": "Produto 6",
+    "type": "income",
+    "price": 90,
+    "amount": 1,
+    "createdAt": "2025-01-15T14:51:21.578Z"
+  },
+  {
+    "id": 12,
+    "name": "Recurso 6",
+    "type": "outcome",
+    "price": 25,
+    "amount": 1,
+    "createdAt": "2025-01-15T16:51:21.578Z"
+  },
+  {
+    "id": 13,
+    "name": "Produto 7",
+    "type": "income",
+    "price": 110,
+    "amount": 1,
+    "createdAt": "2025-01-16T10:51:21.578Z"
+  },
+  {
+    "id": 14,
+    "name": "Recurso 7",
+    "type": "outcome",
+    "price": 35,
+    "amount": 1,
+    "createdAt": "2025-01-16T13:51:21.578Z"
+  }
+]
 }

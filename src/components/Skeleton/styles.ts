@@ -12,7 +12,8 @@ export const Skeleton = styled.div<SkeletonProps>`
   border-radius: ${(props) => props.radius || '8px'};
   display: inline-block;
 
-  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background: ${({ theme }) =>
+    `linear-gradient(90deg, ${theme['zinc-700']} 25%, ${theme['zinc-800']} 50%, ${theme['zinc-700']} 75%)`};
   background-size: 200% 100%;
 
   animation: shimmer 1.5s infinite linear;

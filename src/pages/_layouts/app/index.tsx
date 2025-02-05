@@ -16,11 +16,18 @@ export function AppLayout() {
     }
   }, [accessToken, authIsLoading, navigate])
 
+  if (!authIsLoading && accessToken) {
+    return (
+      <AppContainer>
+        <Sidebar />
+        <Outlet />
+      </AppContainer>
+    )
+  }
+
   return (
     <AppContainer>
-      <Sidebar />
-
-      <Outlet />
+      <p>Carregando...</p>
     </AppContainer>
   )
 }
